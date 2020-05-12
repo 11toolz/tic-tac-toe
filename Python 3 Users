@@ -1,0 +1,62 @@
+#This is the code for a simple game of tic-tac-toe
+import sys
+
+board=['','','','','','','','','']
+
+def print_board():
+    """
+    :rtype: object
+    """
+
+    print(board[0], " |", board[1], "  |", board[2])
+    print('------------')
+    print(board[3], " |", board[4], "  |", board[5])
+    print('------------')
+    print(board[6], " |", board[7], "  |", board[8])
+
+
+def inputmarker():
+    global board
+    global marker
+    marker=input('what letter are you playing? ').upper()
+    pos=int(input('what position from 1-9?' ))
+    board[pos-1]=marker
+
+
+def statuscheck():
+    """
+
+    :rtype: object
+    """
+    if board[6] == board[7] == board[8] == marker or board[3] == board[4] == board[5] == marker :
+        print('WINNER! WINNER!! WINNER!!!')
+        sys.exit()
+    elif board[0] == board[1] == board[2] == marker or board[0] == board[3] == board[6] == marker:
+        print('WINNER! WINNER!! WINNER!!!')
+        sys.exit()
+    elif board[4] == board[1] == board[7] == marker or board[2] == board[5] == board[8] == marker:
+        print('WINNER! WINNER!! WINNER!!!')
+        sys.exit()
+    elif board[4] == board[0] == board[8] == marker or board[2] == board[4] == board[6] == marker:
+        print('WINNER! WINNER!! WINNER!!!')
+        sys.exit()
+    return
+
+def runcode():
+    x = 0
+    while x < 9:
+        inputmarker()
+        print_board()
+        statuscheck()
+        x += 1
+    print("IT'S A TIE :(")
+    sys.exit()
+
+
+print('this is a sample board showing numbers from 1 to 9:')
+print(1, " |", 2, "  |", 3)
+print('------------')
+print(4, " |", 5, "  |", 6)
+print('------------')
+print(7, " |", 8, "  |", 9)
+runcode()
